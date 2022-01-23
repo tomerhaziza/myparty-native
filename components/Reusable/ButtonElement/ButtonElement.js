@@ -24,11 +24,11 @@ const ButtonElement = ({
   titleColor,
   fontWeight,
   isCentered,
-  setSpinner,
   customStyle,
+  fontSize,
 }) => {
   return (
-    <TouchableOpacity onPress={onPress} activeOpacity={0.8}>
+    <TouchableOpacity onPress={onPress} activeOpacity={0.7}>
       <View
         style={{
           ...styles.buttonContainer,
@@ -36,19 +36,16 @@ const ButtonElement = ({
           backgroundColor: bgColor,
         }}
       >
-        {setSpinner ? (
-          <ActivityIndicator size={"large"} color={colors.white} />
-        ) : (
-          <TextElement
-            customStyle={{
-              color: titleColor,
-              fontWeight: fontWeight ? "bold" : "normal",
-              textAlign: isCentered ? "center" : "auto",
-            }}
-          >
-            {title}
-          </TextElement>
-        )}
+        <TextElement
+          customStyle={{
+            color: titleColor,
+            fontWeight: fontWeight ? "bold" : "normal",
+            textAlign: isCentered ? "center" : "auto",
+            fontSize,
+          }}
+        >
+          {title}
+        </TextElement>
       </View>
     </TouchableOpacity>
   );
@@ -56,7 +53,7 @@ const ButtonElement = ({
 
 const styles = EStyleSheet.create({
   buttonContainer: {
-    width: wp("85%"),
+    width: wp("50%"),
     height: 50,
     borderRadius: 8,
     alignItems: "center",

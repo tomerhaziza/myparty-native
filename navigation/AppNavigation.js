@@ -2,7 +2,7 @@ import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
-import StackNavigation from "./StackNavigation";
+import DrawerNavigation from "./DrawerNavigation";
 
 const AppNavigation = () => {
   const MainNavigator = createNativeStackNavigator();
@@ -11,7 +11,7 @@ const AppNavigation = () => {
     <NavigationContainer>
       <MainNavigator.Navigator screenOptions={{ headerShown: false }}>
         <MainNavigator.Group>
-          <MainNavigator.Screen name={"main"} component={StackNavigation} />
+          <MainNavigator.Screen name={"drawer"} component={DrawerNavigation} />
         </MainNavigator.Group>
       </MainNavigator.Navigator>
     </NavigationContainer>

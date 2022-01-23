@@ -10,6 +10,7 @@
     "eject": "expo eject"
   },
   "dependencies": {
+    "@miblanchard/react-native-slider": "^2.1.0",
     "@react-native-async-storage/async-storage": "~1.15.0",
     "@react-navigation/drawer": "^6.1.8",
     "@react-navigation/native": "^6.0.2",
@@ -17,7 +18,7 @@
     "@reduxjs/toolkit": "^1.6.1",
     "axios": "^0.21.4",
     "expo": "~42.0.1",
-    "expo-app-loading": "1.1.2",
+    "expo-app-loading": "^1.1.2",
     "expo-font": "~9.2.1",
     "expo-linking": "~2.3.1",
     "expo-localization": "~10.2.0",
@@ -28,8 +29,9 @@
     "moment": "^2.29.1",
     "react": "16.13.1",
     "react-dom": "16.13.1",
-    "react-native": "^0.67.0",
+    "react-native": "~0.63.4",
     "react-native-extended-stylesheet": "^0.12.0",
+    "react-native-gesture-handler": "^1.10.2",
     "react-native-modalize": "^2.0.12",
     "react-native-paper": "^4.9.2",
     "react-native-reanimated": "~2.2.0",

@@ -1,11 +1,18 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { useDispatch } from "react-redux";
+import { fetchAllEvents } from "../store/asyncThunk";
 import HomeScreen from "../screens/HomeScreen";
 import FavoriteScreen from "../screens/FavoritesScreen";
 import SearchScreen from "../screens/SearchScreen";
 
 export const StackNavigation = () => {
   const StackNavigator = createNativeStackNavigator();
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchAllEvents());
+  }, []);
 
   return (
     <StackNavigator.Navigator screenOptions={{ headerShown: false }}>

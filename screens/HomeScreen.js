@@ -1,33 +1,37 @@
 import React from "react";
-import { View, Text, SafeAreaView, StatusBar } from "react-native";
+import { View, StatusBar } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 // Components
-import TextElement from "../components/Reusable/TextElement/TextElement";
-import ButtonElement from "../components/Reusable/ButtonElement/ButtonElement";
+import AppHeader from "../components/AppHeader/AppHeader";
+import EventsList from "../components/EventsList/EventsList";
+import HomeSortButtons from "../components/HomeSortButtons/HomeSortButtons";
 
 // Style
 import EStyleSheet from "react-native-extended-stylesheet";
 import { colors } from "../assets/colors/colors";
 
-const HomeScreen = ({ navigation }) => {
-  const navigate = () => navigation.navigate("main", { screen: "favorites" });
-
+const HomeScreen = () => {
   return (
-    <SafeAreaView>
-      {/* <StatusBar barStyle="" backgroundColor={}/> */}
-      <View>
-        <TextElement> home</TextElement>
-        <ButtonElement
-          title={"Go to favorites"}
-          bgColor={colors.primary}
-          titleColor={colors.white}
-          onPress={navigate}
-        />
+    <SafeAreaView style={styles.safeArea}>
+      <StatusBar barStyle={"dark-content"} backgroundColor={colors.white} />
+      <View style={styles.screen}>
+        <AppHeader />
+        <HomeSortButtons />
+        <EventsList />
       </View>
     </SafeAreaView>
   );
 };
 
-const styles = EStyleSheet.create({});
-
+const styles = EStyleSheet.create({
+  screen: {
+    height: "100%",
+    width: "100%",
+    backgroundColor: "#f9f5f2",
+  },
+  safeArea: {
+    backgroundColor: "#ffffff",
+  },
+});
 export default HomeScreen;
