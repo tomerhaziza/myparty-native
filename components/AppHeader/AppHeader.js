@@ -18,19 +18,17 @@ import { colors } from "../../assets/colors/colors";
 const AppHeader = () => {
   const navigation = useNavigation();
   const route = useRoute();
+  const navigateToHome = () => {
+    navigation.navigate("main", { screen: "home" });
+  };
   const navigateToFavorites = () => {
     navigation.navigate("main", { screen: "favorites" });
   };
   const navigateToSearch = () => {
     navigation.navigate("main", { screen: "search" });
   };
-  const navigateToHome = () => {
-    // navigation.goBack();
-    navigation.navigate("main", { screen: "home" });
-    // navigation.reset({
-    //   index: 0,
-    //   routes: [{ name: "home" }],
-    // });
+  const navigateToMapView = () => {
+    navigation.navigate("main", { screen: "maps" });
   };
 
   const openDrawer = () => navigation.openDrawer();
@@ -43,7 +41,9 @@ const AppHeader = () => {
       <View style={styles.headerLeft}>
         {route.name === "home" ? (
           <>
-            <Image source={MapIcon} style={styles.icon} />
+            <TouchableOpacity onPress={navigateToMapView}>
+              <Image source={MapIcon} style={styles.icon} />
+            </TouchableOpacity>
             <TouchableOpacity onPress={navigateToFavorites}>
               <Image source={FavoritesIcon} style={styles.favoritesIcon} />
             </TouchableOpacity>

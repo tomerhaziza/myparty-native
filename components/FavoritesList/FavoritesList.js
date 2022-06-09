@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { FlatList } from "react-native";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 // Components
 import EventCard from "../EventCard/EventCard";
@@ -9,24 +10,25 @@ import { useSelector } from "react-redux";
 import EStyleSheet from "react-native-extended-stylesheet";
 
 const FavoritesList = () => {
-  const { eventsList } = useSelector((state) => state.mainSlice);
-  // const [favoritesList, setFavoritesList] = useState([]);
+  const { events, favoritesList } = useSelector((state) => state.mainSlice);
+  const [favoritesListData, setFavoritesListData] = useState([]);
 
-  // useEffect(() => {
-  //   const favoritesList = JSON.parse(localStorage.getItem('favoritesList')) || [];
-  //   const favoritesListData = [];
-  //   favoritesList.forEach((favoritedEventId) => {
-  //     const eventInFavoritesData = events.find((eventItem) => eventItem.id === favoritedEventId);
-  //     if (eventInFavoritesData) {
-  //       favoritesListData.push(eventInFavoritesData);
-  //     }
-  //   });
-  //   if (favoritesListData) setFavoritesList(favoritesListData);
-  // }, [events]);
+  useEffect(() => {
+    const newFavoritesListData = [];
+    favoritesList.forEach((favoritedEventId) => {
+      const eventInFavoritesData = events.find(
+        (eventItem) => eventItem.id === favoritedEventId
+      );
+      if (eventInFavoritesData) {
+        newFavoritesListData.push(eventInFavoritesData);
+      }
+    });
+    if (newFavoritesListData.length) setFavoritesListData(newFavoritesListData);
+  }, [favoritesList]);
 
   return (
     <FlatList
-      data={eventsList}
+      data={favoritesListData}
       keyExtractor={(itemData) => itemData.id}
       showsVerticalScrollIndicator={false}
       removeClippedSubviews={true}

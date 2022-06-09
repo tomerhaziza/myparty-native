@@ -1,16 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { FlatList } from "react-native";
 
 // Components
 import EventCard from "../EventCard/EventCard";
-import { useSelector } from "react-redux";
 
 // Style
 import EStyleSheet from "react-native-extended-stylesheet";
 
-const EventsList = () => {
-  const { eventsList } = useSelector((state) => state.mainSlice);
-
+const EventsList = ({ eventsList }) => {
   return (
     <FlatList
       data={eventsList}

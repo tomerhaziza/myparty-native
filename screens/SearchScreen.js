@@ -13,7 +13,7 @@ import SearchResultsList from "../components/Search/SearchResultsList";
 import SearchBar from "../components/Search/SearchBar";
 
 const SearchScreen = () => {
-  const { eventsList } = useSelector((state) => state.mainSlice);
+  const { events } = useSelector((state) => state.mainSlice);
   const [searchQuery, setSearchQuery] = useState("");
   const [searchResults, setSearchResults] = useState([]);
 
@@ -24,10 +24,10 @@ const SearchScreen = () => {
   useEffect(() => {
     if (searchQuery.trim() !== "") {
       const searchResultsData = [];
-      eventsList.forEach((eventObj) => {
+      events.forEach((eventObj) => {
         if (
           // Search by name
-          eventObj.eventName
+          eventObj.name
             .trim()
             .toLowerCase()
             .includes(searchQuery.trim().toLowerCase())
@@ -43,11 +43,11 @@ const SearchScreen = () => {
     } else {
       setSearchResults([]);
     }
-  }, [eventsList, searchQuery]);
+  }, [events, searchQuery]);
 
   return (
     <SafeAreaView style={styles.safeArea}>
-      <StatusBar barStyle={"dark-content"} backgroundColor={colors.primary} />
+      <StatusBar barStyle={"dark-content"} backgroundColor={colors.white} />
       <View style={styles.screen}>
         <AppHeader />
         <SearchBar
@@ -67,7 +67,7 @@ const styles = EStyleSheet.create({
     backgroundColor: "#f9f5f2",
   },
   safeArea: {
-    backgroundColor: "#ffffff",
+    backgroundColor: colors.white,
   },
 });
 export default SearchScreen;

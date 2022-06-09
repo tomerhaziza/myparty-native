@@ -13,6 +13,10 @@ import { TouchableOpacity } from "react-native-gesture-handler";
 const DrawerContent = () => {
   const navigation = useNavigation();
 
+  const navigateToHome = () => {
+    navigation.navigate("main", { screen: "home" });
+  };
+
   const navigateToFavorites = () => {
     navigation.reset({
       index: 0,
@@ -20,6 +24,7 @@ const DrawerContent = () => {
     });
     navigation.navigate("main", { screen: "favorites" });
   };
+
   const navigateToSearch = () => {
     navigation.reset({
       index: 0,
@@ -27,20 +32,28 @@ const DrawerContent = () => {
     });
     navigation.navigate("main", { screen: "search" });
   };
-  const navigateToHome = () => {
-    navigation.navigate("main", { screen: "home" });
+
+  const navigateToMapView = () => {
+    navigation.reset({
+      index: 0,
+      routes: [{ name: "home" }],
+    });
+    navigation.navigate("main", { screen: "maps" });
   };
 
   return (
     <SafeAreaView>
-      <TouchableOpacity onPress={navigateToSearch}>
-        <TextElement>Search</TextElement>
+      <TouchableOpacity onPress={navigateToHome}>
+        <TextElement>בית</TextElement>
       </TouchableOpacity>
       <TouchableOpacity onPress={navigateToFavorites}>
-        <TextElement>Favorites</TextElement>
+        <TextElement>מועדפים</TextElement>
       </TouchableOpacity>
-      <TouchableOpacity onPress={navigateToHome}>
-        <TextElement>Home</TextElement>
+      <TouchableOpacity onPress={navigateToSearch}>
+        <TextElement>חיפוש</TextElement>
+      </TouchableOpacity>
+      <TouchableOpacity onPress={navigateToMapView}>
+        <TextElement>מפה</TextElement>
       </TouchableOpacity>
     </SafeAreaView>
   );

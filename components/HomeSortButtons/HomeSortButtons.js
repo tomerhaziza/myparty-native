@@ -7,12 +7,27 @@ import ButtonElement from "../Reusable/ButtonElement/ButtonElement";
 
 // Style
 import EStyleSheet from "react-native-extended-stylesheet";
+import { colors } from "../../assets/colors/colors";
 
-const HomeSortButtons = () => {
+const HomeSortButtons = (props) => {
+  const { sortType, setSortType } = props;
   return (
     <View style={styles.sortContainer}>
-      <ButtonElement title={"לפי תאריך"} fontWeight={"bold"} fontSize={28} />
-      <ButtonElement title={"לפי מרחק"} fontWeight={"bold"} fontSize={28} />
+      <ButtonElement
+        title={"לפי תאריך"}
+        titleColor={sortType === "date" ? "black" : "gray"}
+        fontWeight={"bold"}
+        fontSize={28}
+        customStyle
+        onPress={() => setSortType("date")}
+      />
+      <ButtonElement
+        title={"לפי מרחק"}
+        titleColor={sortType === "distance" ? "black" : "gray"}
+        fontWeight={"bold"}
+        fontSize={28}
+        onPress={() => setSortType("distance")}
+      />
     </View>
   );
 };
@@ -26,7 +41,7 @@ const styles = EStyleSheet.create({
     justifyContent: "space-around",
     alignItems: "center",
     paddingHorizontal: "0.5rem",
-    backgroundColor: "#ffffff",
+    backgroundColor: colors.white,
     shadowColor: "#000",
     shadowOffset: {
       width: 0,

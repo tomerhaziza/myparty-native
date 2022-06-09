@@ -13,7 +13,7 @@ import { colors } from "../assets/colors/colors";
 const FavoritesScreen = () => {
   return (
     <SafeAreaView style={styles.safeArea}>
-      <StatusBar barStyle={"dark-content"} backgroundColor={colors.primary} />
+      <StatusBar barStyle={"dark-content"} backgroundColor={colors.white} />
       <View style={styles.screen}>
         <AppHeader />
         <View style={styles.favoritesTitle}>
@@ -32,7 +32,7 @@ const styles = EStyleSheet.create({
     backgroundColor: "#f9f5f2",
   },
   safeArea: {
-    backgroundColor: "#ffffff",
+    backgroundColor: colors.white,
   },
   favoritesTitle: {
     paddingBottom: 10,
